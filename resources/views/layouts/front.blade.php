@@ -4,7 +4,7 @@
 
 
 <!-- ===== Start of Login Pop Up div ===== -->
-<div class="cd-user-modal">
+{{--<div class="cd-user-modal">
     <!-- this is the entire modal form, including the background -->
     <div class="cd-user-modal-container">
         <!-- this is the container wrapper -->
@@ -62,7 +62,7 @@
         <!-- cd-signup -->
     </div>
     <!-- cd-user-modal-container -->
-</div>
+</div>--}}
 <!-- ===== End of Login Pop Up div ===== -->
 
 
