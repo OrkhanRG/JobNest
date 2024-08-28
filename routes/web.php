@@ -8,9 +8,11 @@ use App\Http\Controllers\Front\JobController;
 use App\Http\Controllers\Front\ResumeController;
 use App\Http\Controllers\Front\CompanyController;
 use App\Http\Controllers\Front\BlogController;
+//Auth
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
+//admin
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::name('front.')->group(function (){
     Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -28,8 +30,14 @@ Route::name('front.')->group(function (){
     Route::get('/blog/details', [BlogController::class, 'details'])->name('blog.details');
 });
 
+Route::prefix('user')->name('user.')->middleware('auth')->group(function (){
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::get('/user/verify/{token}', [RegisterController::class, 'verify'])->name('user.verify');

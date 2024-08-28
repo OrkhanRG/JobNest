@@ -30,15 +30,12 @@
 
                 <!-- Links -->
                 <ul class="nopadding">
-                    <li><a href="post-job.html"><i class="fa fa-angle-double-right"></i>add job</a></li>
-                    <li><a href="blog-right-sidebar-v1.html"><i class="fa fa-angle-double-right"></i>blog</a></li>
-                    <li><a href="search-jobs-1.html"><i class="fa fa-angle-double-right"></i>find jobs</a></li>
-                    <li><a href="faq.html"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                    <li><a href="login.html"><i class="fa fa-angle-double-right"></i>login</a></li>
-                    <li><a href="privacy-policy.html"><i class="fa fa-angle-double-right"></i>privacy policy</a></li>
-                    <li><a href="register.html"><i class="fa fa-angle-double-right"></i>register</a></li>
-                    <li><a href="shop-right-sidebar.html"><i class="fa fa-angle-double-right"></i>shop</a></li>
-                    <li><a href="submit-resume.html"><i class="fa fa-angle-double-right"></i>submit resume</a></li>
+                    <li><a href="{{ route('front.blogs') }}"><i class="fa fa-angle-double-right"></i>bloq</a></li>
+                    <li><a href="{{ route('front.job-search') }}"><i class="fa fa-angle-double-right"></i>iş elanları</a></li>
+                    <li><a href="{{ route('front.resume-search') }}"><i class="fa fa-angle-double-right"></i>cv-lər</a></li>
+                    <li><a href="{{ route('front.companies') }}"><i class="fa fa-angle-double-right"></i>şirkətlər</a></li>
+                    <li><a href="{{ route('login') }}"><i class="fa fa-angle-double-right"></i>daxil ol</a></li>
+                    <li><a href="{{ route('register') }}"><i class="fa fa-angle-double-right"></i>qeydiyyat</a></li>
                 </ul>
             </div>
 
@@ -247,6 +244,8 @@
 <script src="{{ asset('assets/js/countdown.js') }}"></script>
 <script src="{{ asset('assets/js/isotope.mddin.js') }}"></script>
 <script src="{{ asset('assets/js/custom.js') }}"></script>
+@include('sweetalert::alert')
+
 @stack('js')
 
 </body>

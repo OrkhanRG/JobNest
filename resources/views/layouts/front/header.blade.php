@@ -15,7 +15,7 @@
     <meta name="author" content="GnoDesign">
 
     <!-- Website Title -->
-    <title>@yield('title')</title>
+    <title>@yield('title') | JonNest</title>
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/apple-touch-icon.png') }}">
 

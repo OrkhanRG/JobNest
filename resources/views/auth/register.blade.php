@@ -43,72 +43,114 @@
 
                         <!-- Personal Account Tab -->
                         <li role="presentation" class="active">
-                            <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab" aria-expanded="true">
-                                <h6>Personal Account</h6>
-                                <span>I'm looking for a job</span>
+                            <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab"
+                               aria-expanded="true">
+                                <h6>Namizəd Hesabı</h6>
+                                <span>İş axtarıram</span>
                             </a>
                         </li>
 
                         <!-- Company Account Tab -->
                         <li role="presentation" class="">
-                            <a href="#company" aria-controls="company" role="tab" data-toggle="tab" aria-expanded="false">
-                                <h6>Company Account</h6>
-                                <span>We are hiring</span>
+                            <a href="#company" aria-controls="company" role="tab" data-toggle="tab"
+                               aria-expanded="false">
+                                <h6>Şirkət Hesabı</h6>
+                                <span>İşə qəbul edirik</span>
                             </a>
                         </li>
                     </ul>
                     <!-- End of Nav Tabs -->
 
 
-
                     <!-- Start of Tab Content -->
                     <div class="tab-content ptb60">
 
-                        <!-- Start of Tabpanel for Personal Account -->
+                        <!-- Start of Tabpanel for Candidate Account -->
                         <div role="tabpanel" class="tab-pane active" id="personal">
                             <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
+                                <div class="col-md-12">
 
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Full Name</label>
-                                        <input type="text" class="form-control">
-                                    </div>
+                                    <form action="{{ route('register') }}" method="POST">
+                                        @csrf
+                                        <!-- Form Group -->
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label>Ad</label>
+                                                <input type="text" name="name" id="name"
+                                                       class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?? '' }}">
+                                                @error('name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control">
-                                    </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Soyad</label>
+                                                <input type="text" name="surname" id="surname"
+                                                       class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname') ?? '' }}">
+                                                @error('surname')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>E-mail</label>
-                                        <input type="email" class="form-control">
-                                    </div>
+                                            <!-- Form Group -->
+                                            <div class="form-group col-md-12">
+                                                <label>İstifadəçi Adı</label>
+                                                <input type="text" name="username" id="username"
+                                                       class="form-control @error('username') is-invalid @enderror" value="{{ old('username') ?? '' }}">
+                                                @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
+                                            <!-- Form Group -->
+                                            <div class="form-group col-md-12">
+                                                <label>E-mail</label>
+                                                <input type="email" name="email" id="email"
+                                                       class="form-control @error('email') is-invalid @enderror" value="{{ old('email') ?? '' }}">
+                                                @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group mb30">
-                                        <label>Confirm Password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
+                                            <!-- Form Group -->
+                                            <div class="form-group col-md-6">
+                                                <label>Şifrə</label>
+                                                <input type="password" name="password" id="password"
+                                                       class="form-control @error('password') is-invalid @enderror">
+                                                @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group text-center">
-                                        <input type="checkbox" id="agree">
-                                        <label for="agree">Agree with the <a href="#">Terms and Conditions</a></label>
-                                    </div>
+                                            <!-- Form Group -->
+                                            <div class="form-group mb30 col-md-6">
+                                                <label>Şifrə Təkrar</label>
+                                                <input type="password" name="password_confirmation"
+                                                       id="password_confirmation"
+                                                       class="form-control @error('password_confirmation') is-invalid @enderror">
+                                                @error('password_confirmation')
+                                                <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
 
-                                    <!-- Form Group -->
-                                    <div class="form-group text-center nomargin">
-                                        <button type="submit" class="btn btn-blue btn-effect">Hesab Yarat</button>
-                                    </div>
+                                            @if(false)
+                                                <!-- Form Group -->
+                                                <div class="form-group text-center">
+                                                    <input type="checkbox" id="agree">
+                                                    <label for="agree">Agree with the <a href="#">Terms and
+                                                            Conditions</a></label>
+                                                </div>
+                                            @endif
+
+                                            <!-- Form Group -->
+                                            <div class="form-group text-center nomargin">
+                                                <input type="hidden" name="account_type" id="account_type"
+                                                       value="candidate">
+                                                <button type="submit" class="btn btn-blue btn-effect">Hesab Yarat
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
 
                                 </div>
                             </div>
@@ -117,83 +159,116 @@
 
                         <!-- Start of Tabpanel for Company Account -->
                         <div role="tabpanel" class="tab-pane" id="company">
-                            <div class="row">
+                            <form action="{{ route('register') }}" method="POST">
+                                @csrf
 
-                                <!-- Start of the First Column -->
-                                <div class="col-md-6">
+                                <div class="row">
 
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control">
+                                    <div class="form-group col-md-6">
+                                        <label>Ad</label>
+                                        <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name' ?? '') }}">
+                                        @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Soyad</label>
+                                        <input type="text" name="surname" id="surname" class="form-control @error('surname') is-invalid @enderror" value="{{ old('surname' ?? '') }}">
+                                        @error('surname')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Form Group -->
-                                    <div class="form-group">
+                                    <div class="form-group col-md-6">
+                                        <label>İstifadəçi Adı</label>
+                                        <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username' ?? '') }}">
+                                        @error('username')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Form Group -->
+                                    <div class="form-group col-md-6">
+                                        <label>Şirkət</label>
+                                        <input type="text" name="company" id="company" class="form-control @error('company') is-invalid @enderror" value="{{ old('company' ?? '') }}">
+                                        @error('company')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Form Group -->
+                                    <div class="form-group col-md-6">
+                                        <label>Sayt</label>
+                                        <input type="text" name="website" id="website" class="form-control @error('website') is-invalid @enderror" value="{{ old('website' ?? '') }}">
+                                        @error('website')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Form Group -->
+                                    <div class="form-group col-md-6">
+                                        <label>Ünvan</label>
+                                        <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror" value="{{ old('email' ?? '') }}">
+                                        @error('address')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+
+
+                                    <!-- Form Group -->
+                                    <div class="form-group col-md-12">
                                         <label>E-mail</label>
-                                        <input type="email" class="form-control">
+                                        <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email' ?? '') }}">
+                                        @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Password</label>
-                                        <input type="password" class="form-control">
+                                    <div class="form-group col-md-6">
+                                        <label>Şifrə</label>
+                                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                                        @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                     <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Confirm Password</label>
-                                        <input type="password" class="form-control">
-                                    </div>
-                                </div>
-                                <!-- End of the First Column -->
-
-                                <!-- Start of the Second Column -->
-                                <div class="col-md-6">
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Full Name</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Company Name</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Website</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <!-- End of the Second Column -->
-                            </div>
-
-                            <div class="row mt20">
-                                <div class="col-md-12 text-center">
-
-                                    <!-- Form Group -->
-                                    <div class="form-group">
-                                        <input type="checkbox" id="agree2">
-                                        <label for="agree2">Agree with the <a href="#">Terms and Conditions</a></label>
-                                    </div>
-
-                                    <!-- Form Group -->
-                                    <div class="form-group nomargin">
-                                        <button type="submit" class="btn btn-blue btn-effect">Hesab Yarat</button>
+                                    <div class="form-group col-md-6">
+                                        <label>Şifrə Təkrar</label>
+                                        <input type="password" name="password_confirmation" id="password_confirmation"
+                                               class="form-control @error('password_confirmation') is-invalid @enderror">
+                                        @error('password_confirmation')
+                                        <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
 
                                 </div>
-                            </div>
+
+                                <div class="row mt20">
+                                    <div class="col-md-12 text-center">
+
+                                        <!-- Form Group -->
+                                        @if(false)
+                                            <div class="form-group">
+                                                <input type="checkbox" id="agree2">
+                                                <label for="agree2">Agree with the <a href="#">Terms and
+                                                        Conditions</a></label>
+                                            </div>
+                                        @endif
+
+                                        <!-- Form Group -->
+                                        <div class="form-group nomargin">
+                                            <input type="hidden" name="account_type" id="account_type" value="company">
+                                            <button type="submit" class="btn btn-blue btn-effect">Hesab Yarat</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
 
                         </div>
                         <!-- End of Tabpanel for Company Account -->
