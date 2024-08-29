@@ -1,5 +1,5 @@
 @extends('layouts.front')
-@section('title', 'Dacil Ol')
+@section('title', 'Şifrəmi Unutdum')
 
 @push('css')
 @endpush
@@ -12,7 +12,7 @@
             <!-- Start of Page Title -->
             <div class="row">
                 <div class="col-md-12">
-                    <h2>Daxil Ol</h2>
+                    <h2>Şifrəmi Unutdum</h2>
                 </div>
             </div>
             <!-- End of Page Title -->
@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li><a href="{{ route('front.index') }}">anasəhifə</a></li>
-                        <li class="active">daxil ol</li>
+                        <li class="active">şifrəmi unutdum</li>
                     </ul>
                 </div>
             </div>
@@ -45,11 +45,11 @@
                 <div class="login-box">
 
                     <div class="login-title">
-                        <h4>Daxil Ol</h4>
+                        <h4>Şifrəmi Unutdum</h4>
                     </div>
 
                     <!-- Start of Login Form -->
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('forgot-password') }}" method="POST">
                         @csrf
                         <!-- Form Group -->
                         <div class="form-group">
@@ -58,31 +58,8 @@
                         </div>
 
                         <!-- Form Group -->
-                        <div class="form-group">
-                            <label>Şifrə</label>
-                            <input type="password" name="password" id="password" class="form-control" placeholder="Şifrəniz">
-                        </div>
-
-                        <!-- Form Group -->
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-6">
-
-                                    <input type="checkbox" name="remember" id="remember">
-                                    <label for="remember-me2">Məni xatırla?</label>
-
-                                </div>
-
-                                <div class="col-xs-6 text-right">
-                                    <a href="{{route('forgot-password')}}">Şifrəni unutdun?</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Form Group -->
                         <div class="form-group text-center">
-                            <button class="btn btn-blue btn-effect">Daxil Ol</button>
-                            <a href="{{ route('register') }}" class="btn btn-blue btn-effect">Qeydiyyat</a>
+                            <button class="btn btn-blue btn-effect">Doğrulama e-mail göndər</button>
                         </div>
 
                     </form>

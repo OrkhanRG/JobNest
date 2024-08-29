@@ -434,21 +434,24 @@
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user" src="{{ asset('assets/admin/images/users/avatar-1.jpg') }}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Orxan Ismayılov</span>
-                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">Developer</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ auth()->user()->name . ' ' . auth()->user()->surname }}</span>
+                                <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text">{{ ucfirst(auth()->user()->role) }}</span>
                             </span>
                         </span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <!-- item-->
-                        <h6 class="dropdown-header">Xoş gəldin Orxan!</h6>
+                        <h6 class="dropdown-header">Xoş gəldin {{ auth()->user()->name ?? auth()->user()->username }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Profil</span></a>
                         <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Mesajlar</span></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Parametrlər</span></a>
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Klid Ekran</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Çıxış</span></a>
+                        <a class="dropdown-item" href="javascript:void(0)" onclick="event.preventDefault(); document.querySelector('#formLogout').submit()"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Çıxış</span></a>
                     </div>
+                    <form action="{{ route('logout') }}" method="POST" id="formLogout">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

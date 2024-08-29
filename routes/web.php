@@ -36,8 +36,14 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function (){
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/user/verify/{token}', [RegisterController::class, 'verify'])->name('user.verify');
+
+Route::get('/user/forgot-password', [RegisterController::class, 'showForgotPassword'])->name('forgot-password');
+Route::post('/user/forgot-password', [RegisterController::class, 'forgotPassword']);
+Route::get('/user/verify/forgot-password/{token}', [RegisterController::class, 'forgotPasswordVerify'])->name('forgot-password-verify');
+Route::post('/user/change-password', [RegisterController::class, 'changePassword'])->name('change-password');
