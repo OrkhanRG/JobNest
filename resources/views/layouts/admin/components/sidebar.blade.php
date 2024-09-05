@@ -32,26 +32,24 @@
                 <li class="menu-title"><span data-key="t-menu">Menyu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('user.index') }}">
+                    <a class="nav-link menu-link {{ Route::is('user.index') ? "active" : "" }}" href="{{ route('user.index') }}">
                         <i class="ri-dashboard-2-line"></i> <span>Dashboard</span>
                     </a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="#users" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="mdi mdi-account-group"></i> <span>İstifadəçilər</span>
-                    </a>
-                    <div class="collapse menu-dropdown" id="users">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-analytics"> İş Axtaranlar </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-crm"> Şirkətlər </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
+                @if(isDeveloper())
+                    <li class="nav-item">
+                        <a class="nav-link menu-link" href="#users" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <i class="mdi mdi-account-group"></i> <span>İstifadəçilər</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ Route::is('user.users') ? "show" : "" }}" id="users">
+                            <ul class="nav nav-sm flex-column">
+                                <li class="nav-item">
+                                    <a href="{{ route('user.users') }}" class="nav-link {{ Route::is('user.users') ? "active" : "" }}" data-key="t-analytics"> Bütün istifadəçilər </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </div>
         <!-- Sidebar -->

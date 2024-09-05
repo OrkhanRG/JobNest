@@ -20,7 +20,8 @@
     <!-- App Css-->
     <link href="{{ asset('assets/admin/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="{{ asset('assets/admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" type="text/css" />
+    {{--    <link href="{{ asset('assets/admin/css/custom.min.css') }}" rel="stylesheet" type="text/css" />--}}
     @stack('css')
 
 </head>

@@ -120,6 +120,12 @@
 
             <div class="d-flex align-items-center">
 
+                <div class="ms-1 header-item d-none d-sm-flex">
+                    <a href="{{ route('front.index') }}" title="Sayta keçid et" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle">
+                        <i class='bx bx-arrow-back fs-22'></i>
+                    </a>
+                </div>
+
                 <div class="dropdown d-md-none topbar-head-dropdown header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-search-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="bx bx-search fs-22"></i>

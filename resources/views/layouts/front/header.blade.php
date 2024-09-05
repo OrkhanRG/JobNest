@@ -87,7 +87,11 @@
 
                         <!-- Login Menu Item -->
                         <li class="menu-item login-btn">
-                            <a id="modal_trigger" href="{{ route('login') }}" role="button"><i class="fa fa-lock"></i>Daxil Ol</a>
+                            @guest
+                                <a id="modal_trigger" href="{{ route('login') }}" role="button"><i class="fa fa-lock"></i>Daxil Ol</a>
+                            @else
+                                <a id="modal_trigger" href="{{ route('user.index') }}" role="button"><i class="fa fa-arrow-right"></i>{{ auth()->user()->role === 'developer' ? "Kabinetə keçid" : (auth()->user()->role === 'company' ? "Elan yerləşdir" : "CV yerləşdir") }}</a>
+                            @endguest
                         </li>
 
                         {{--<li class="menu-item login-btn">

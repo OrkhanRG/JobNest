@@ -11,8 +11,9 @@ use App\Http\Controllers\Front\BlogController;
 //Auth
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-//admin
+//user
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::name('front.')->group(function (){
     Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -31,14 +32,20 @@ Route::name('front.')->group(function (){
 });
 
 Route::prefix('user')->name('user.')->middleware('auth')->group(function (){
+    //dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    Route::middleware('is_developer')->group(function (){
+        //user
+        Route::get('/users', [UserController::class, 'users'])->name('users');
+    });
 });
 
-Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/user/verify/{token}', [RegisterController::class, 'verify'])->name('user.verify');
