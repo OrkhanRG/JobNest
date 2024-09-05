@@ -15,7 +15,7 @@ class CompanyCheckMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role === 'company') {
+        if (auth()->check() && isCompany()) {
             return $next($request);
         }
 

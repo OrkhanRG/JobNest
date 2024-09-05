@@ -36,7 +36,7 @@
                         <i class="ri-dashboard-2-line"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                @if(isDeveloper())
+                @if(isRole('developer'))
                     <li class="nav-item">
                         <a class="nav-link menu-link" href="#users" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                             <i class="mdi mdi-account-group"></i> <span>İstifadəçilər</span>

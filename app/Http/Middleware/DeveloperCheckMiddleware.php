@@ -16,7 +16,7 @@ class DeveloperCheckMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role === 'developer') {
+        if (auth()->check() && isRole('developer')) {
             return $next($request);
         }
 

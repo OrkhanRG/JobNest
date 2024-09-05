@@ -15,7 +15,7 @@ class CandidateCheckMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role === 'candidate') {
+        if (auth()->check() && isRole('candidate')) {
             return $next($request);
         }
 

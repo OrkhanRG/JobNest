@@ -1,5 +1,12 @@
 <?php
 
+if (!function_exists('isRole')){
+    function isRole(string $role): bool
+    {
+        return auth()->user()->role === $role ?? false;
+    }
+}
+
 if (!function_exists('isDeveloper')){
     function isDeveloper(): bool
     {
