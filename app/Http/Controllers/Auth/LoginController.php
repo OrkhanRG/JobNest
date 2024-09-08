@@ -21,7 +21,11 @@ class LoginController extends Controller
         $data = $request->only('email', 'password');
         $remember = $request->has('remember');
 
-        $user = User::query()->where('email', $data['email'])->first();
+        $user = User::query()
+            ->where('email', $data['email'])
+            ->where('is_active', 1)
+            ->where('is_blocked', 0)
+            ->first();
 
         if (!$user || !Hash::check($data['password'], $user->password)) {
             alert()->error('Diqqət!', 'Email və ya Şifrə yanlışdır!');

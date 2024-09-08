@@ -38,7 +38,11 @@ Route::prefix('user')->name('user.')->middleware('auth')->group(function (){
     Route::middleware('is_developer')->group(function (){
         //user
         Route::get('/users', [UserController::class, 'users'])->name('users');
+        Route::post('/users/delete', [UserController::class, 'delete'])->name('user.delete');
+        Route::post('user/status-change', [UserController::class, 'changeStatus'])->name('user.change-status');
+        Route::post('user/blocked-status-change', [UserController::class, 'changeBlockedStatus'])->name('user.blocked-status-change');
     });
+
 });
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

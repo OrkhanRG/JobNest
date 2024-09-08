@@ -6,4 +6,10 @@ return [
         'candidate' => 1,
         'company' => 2,
     ]*/
+
+    'status' => [
+        'deaktived' => 0,
+        'inspection' => 1,
+        'published' => 2,
+    ],
 ];
