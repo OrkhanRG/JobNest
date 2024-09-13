@@ -77,7 +77,7 @@
                                     </td>
                                     <td>
                                         <div class="hstack gap-3 flex-wrap">
-                                            <a href="javascript:void(0);" class="link-warning fs-17" title="Edit"><i class="ri-edit-2-line"></i></a>
+                                            <a href="{{ route('user.user.update', $user->id) }}" class="link-warning fs-17" title="Edit"><i class="ri-edit-2-line"></i></a>
                                             <a href="javascript:void(0);" class="link-danger fs-17" title="Sil" data-role="delete"><i class="ri-delete-bin-line"></i></a>
                                         </div>
                                     </td>

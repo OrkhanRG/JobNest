@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
@@ -41,6 +42,34 @@ class UserService
     public function setUser(User $user): self
     {
         $this->user = $user;
+        return $this;
+    }
+
+    public function prepareDataForRequest(): self
+    {
+        $data = request()->only("name", "surname", "username", "address", "company", "website", "phone", "avatar");
+        $data['is_active'] = request()->has('is_active');
+        $data['is_blocked'] = request()->has('is_blocked');
+
+        if (request()->has('role') && in_array(request()->role, config('custom.roles'))) {
+            $data['role'] = request()->role;
+        }
+
+        if (request()->password) {
+            $data['password'] = request()->password;
+        }
+
+        if (request()->has('avatar')) {
+            $file = request()->file('avatar');
+            $folder = 'images/users';
+            $data['avatar'] = fileUpload($file, $folder);
+
+            if (isset($this->user) && $this->user->avatar && file_exists($this->user->avatar)) {
+                unlink($this->user->avatar);
+            }
+        }
+
+        $this->prepareData = $data;
         return $this;
     }
 

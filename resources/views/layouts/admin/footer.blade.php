@@ -28,6 +28,7 @@
 <script src="{{ asset('assets/admin/js/plugins.js') }}"></script>
 <script src="{{ asset('assets/admin/libs/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/pages/sweetalerts.init.js') }}"></script>
+@include('sweetalert::alert')
 
 <!-- App js -->
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
@@ -38,7 +39,6 @@
         }
     })
 </script>
-@include('sweetalert::alert')
 @stack('js')
 </body>
 
